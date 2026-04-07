@@ -1,0 +1,76 @@
+# =========================
+# Dependencies
+# =========================
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Allow example env file
+!.env.example
+
+# =========================
+# Logs
+# =========================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Build / Production Folders
+# =========================
+dist/
+build/
+client/build/
+
+# =========================
+# Coverage Reports
+# =========================
+coverage/
+
+# =========================
+# Cache Files
+# =========================
+.cache/
+.parcel-cache/
+
+# =========================
+# OS Generated Files
+# =========================
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# =========================
+# Editor Settings
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Temporary Files
+# =========================
+tmp/
+temp/
+*.swp
+*.swo
+
+# =========================
+# Runtime Data
+# =========================
+pids
+*.pid
+*.seed
+*.pid.lock
