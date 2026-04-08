@@ -2,8 +2,12 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import express from "express";
+import connectDb from "./config/db.js";
 
 const app = express();
+
+// db connection
+connectDb();
 
 //middleware
 app.use(express.json());
