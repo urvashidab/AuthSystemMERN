@@ -50,4 +50,8 @@
   .nav-link {
     @apply uppercase text-sm tracking-wider text-primaryText hover:text-mutedText transition-colors duration-150;
   }
+
+  .form-input {
+    @apply border-b  mb-2 border-border  py-2 px-2 outline-none placeholder:text-placeholderText;
+  }
 }
