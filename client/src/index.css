@@ -1,1 +1,53 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+@theme {
+  --font-sans: "Poppins", sans-serif;
+
+  /* ── Backgrounds ────────────────────────────── */
+  --color-pageBg: #f6f4e9; /* Chiffon — page / app shell    */
+  --color-cardBg: #efe9de; /* Warm Parchment    — cards / modals      */
+  --color-inputBg: #eae2d6; /* Warm Putty        — inputs / selects    */
+  --color-subtleBg: #ded5c8; /* Soft Mushroom     — hover / disabled    */
+
+  /* ── Borders ────────────────────────────────── */
+  --color-border: #d4c9b8; /* Mushroom Beige    — cards / containers  */
+  --color-inputBorder: #c4b8a4; /* Warm Putty Edge   — form fields         */
+  --color-subtleBorder: #b8a892; /* Dry Clay          — dividers / rows     */
+
+  /* ── Typography ─────────────────────────────── */
+  --color-headingText: #584738; /* Mahogany — H1 / H2 / H3     */
+  --color-bodyText: #3e2c20; /* Dark Espresso      — paragraphs        */
+  --color-primaryText: #27272a; /* Deep Espresso Clay — labels / links    */
+  --color-mutedText: #7a6552; /* Soft Mushroom Beige — helpers / meta   */
+  --color-placeholderText: #a8957e; /* Warm Sand          — placeholders      */
+
+  /* ── Accent / Brand ─────────────────────────── */
+  --color-accent: #6b4226; /* Rich Earth Brown  — buttons / active    */
+  --color-accentHover: #573519; /* Deep Walnut       — button hover        */
+  --color-accentTint: #e8ddd0; /* Pale Mushroom     — badges / tinted bg  */
+
+  /* ── Semantic States ────────────────────────── */
+  --color-error: #b85c3a; /* Burnt Sienna      — errors / danger      */
+  --color-success: #6a8c58; /* Sage              — success / confirmed   */
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-pageBg text-bodyText antialiased;
+  }
+  h1 {
+    @apply uppercase text-headingText md:tracking-widest font-semibold text-2xl;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply uppercase border border-accent tracking-widest cursor-pointer text-accent
+    hover:bg-accent hover:text-cardBg
+    transition-all duration-200 ease-out;
+  }
+  .nav-link {
+    @apply uppercase text-sm tracking-wider text-primaryText hover:text-mutedText transition-colors duration-150;
+  }
+}
