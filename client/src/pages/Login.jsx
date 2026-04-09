@@ -5,9 +5,14 @@ import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 const Login = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [hidePassword, setHidePassword] = useState(true);
+  const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
 
   const toggleHidePassword = () => {
     setHidePassword((prev) => !prev);
+  };
+
+  const toggleConfirmPassword = () => {
+    setHideConfirmPassword((prev) => !prev);
   };
 
   const toggleLogIn = () => {
@@ -16,14 +21,15 @@ const Login = () => {
 
   return (
     <>
-      <div className="py-10 w-full h-full">
-        <div className="  flex flex-col gap-6 justify-start max-w-lg mx-auto">
+      <div className="py-6 w-full">
+        <div className="bg-cardBg border border-border rounded-xl px-8 py-10 flex flex-col gap-6 max-w-lg mx-auto   shadow-md">
           {/* title */}
 
-          <h1 className="text-center text-2xl tracking-widest text-primaryText font-light">
-            {isLoginMode ? "LOG IN" : "REGISTER"}
-          </h1>
-          {/* how to draw a line below login and register just like width of same size as word */}
+          <div className="flex justify-center">
+            <h2 className="page-title">
+              {isLoginMode ? "LOG IN" : "REGISTER"}
+            </h2>
+          </div>
 
           {/* form */}
           <form id="loginForm" className="flex flex-col gap-4  mt-6">
@@ -63,7 +69,7 @@ const Login = () => {
             {!isLoginMode && (
               <div className="relative">
                 <input
-                  type={hidePassword ? "password" : "text"}
+                  type={hideConfirmPassword ? "password" : "text"}
                   required
                   placeholder="CONFIRM PASSWORD"
                   className="w-full form-input"
@@ -71,10 +77,10 @@ const Login = () => {
 
                 <button
                   type="button"
-                  onClick={toggleHidePassword}
+                  onClick={toggleConfirmPassword}
                   className="absolute right-2 top-2 cursor-pointer text-lg text-mutedText hover:text-accentHover"
                 >
-                  {hidePassword ? <IoEyeOutline /> : <IoEyeOffOutline />}
+                  {hideConfirmPassword ? <IoEyeOutline /> : <IoEyeOffOutline />}
                 </button>
               </div>
             )}
@@ -109,7 +115,7 @@ const Login = () => {
               <button
                 onClick={toggleLogIn}
                 type="button"
-                className="flex-1 btn px-6 py-1.6 rounded"
+                className="flex-1 btn px-6 py-1.5 rounded"
               >
                 {isLoginMode ? "REGISTER" : "BACK TO LOG IN"}
               </button>
@@ -120,7 +126,7 @@ const Login = () => {
             <div className="flex gap-1">
               <p className="text-mutedText ">Need Help?</p>
               <NavLink to="/contact">
-                <p className="text-sm text-primaryText text-underline font-extralight underline">
+                <p className="text-sm text-primaryText text-underline font-extralight">
                   Contact Us
                 </p>
               </NavLink>

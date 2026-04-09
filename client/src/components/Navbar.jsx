@@ -8,7 +8,7 @@ const Navbar = () => {
       <h1 className="text-headingText tracking-wider">Secure Auth API</h1>
 
       {/* middle part */}
-      <ul className="lg:flex gap-6 items-center justify-center hidden">
+      <nav className="lg:flex gap-6 items-center justify-center hidden">
         <NavLink className="nav-link" to="/">
           Home
         </NavLink>
@@ -22,7 +22,7 @@ const Navbar = () => {
         <NavLink className="nav-link font-extrabold  " to="/contact">
           admin log in
         </NavLink>
-      </ul>
+      </nav>
 
       {/* right side-login */}
 

@@ -52,6 +52,18 @@
   }
 
   .form-input {
-    @apply border-b  mb-2 border-border  py-2 px-2 outline-none placeholder:text-placeholderText;
+    @apply border-b  mb-2 border-border  py-2 px-2 outline-none placeholder:text-placeholderText focus:border-accent transition-colors duration-200;
+  }
+
+  .page-title {
+    @apply inline-block relative text-center text-2xl tracking-widest
+      text-headingText font-light uppercase;
+  }
+
+  .page-title::after {
+    content: "";
+    @apply absolute left-0 -bottom-2 w-full block bg-accent;
+    height: 2px;
+    opacity: 0.85;
   }
 }

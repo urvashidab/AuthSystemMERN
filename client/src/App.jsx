@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import Navbar from "./components/Navbar";
@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+
 import ResetPassword from "./pages/ResetPassword";
 import About from "./pages/About";
 
@@ -23,7 +23,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
