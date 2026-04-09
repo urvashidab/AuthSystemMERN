@@ -19,7 +19,7 @@ const Navbar = () => {
           contact
         </NavLink>
 
-        <NavLink className="nav-link font-extrabold  " to="/contact">
+        <NavLink className="nav-link font-extrabold  " to="/adminlogin">
           admin log in
         </NavLink>
       </nav>

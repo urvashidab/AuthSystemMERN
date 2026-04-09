@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-
+import AdminLogin from "./pages/AdminLogin";
 import ResetPassword from "./pages/ResetPassword";
 import About from "./pages/About";
 
@@ -23,7 +23,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
-
+          <Route path="/adminlogin" element={<AdminLogin />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
