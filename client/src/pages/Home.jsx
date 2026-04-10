@@ -4,33 +4,37 @@ import { features, steps } from "../assets/data";
 
 const Home = () => {
   return (
-    <div className="flex flex-col gap-14 py-10">
+    <div className="flex flex-col gap-16 py-10">
       {/* ── hero section------- */}
       <section className="flex flex-col items-center text-center gap-6 py-10">
-        <h2 className="text-3xl font-bold">
-          Secure Login. Verified Users. Protected Access.
+        <h2 className="text-3xl font-bold text-headingText tracking-wide">
+          Secure Authentication. Verified Users. Protected Access.
         </h2>
 
         <p className="text-sm md:text-base text-mutedText font-light max-w-md leading-relaxed">
-          A clean, token-based authentication system built with Node.js and
-          React. Register, log in, reset passwords — all secured and ready to
-          use.
+          A clean, token-based authentication system built with{" "}
+          <span className="font-semibold">Node.js</span> and{" "}
+          <span className="font-semibold">React</span>. Register, log in, reset
+          passwords — all secured and ready to use.
         </p>
 
         <div className="flex gap-4 mt-4 flex-col sm:flex-row">
           <NavLink to="/login" className="btn px-6 py-1.5 ">
             Get Started
           </NavLink>
-          <NavLink to="/about" className="btn px-6 py-1.5">
+          <NavLink
+            to="/about"
+            className="px-6 py-1.5 uppercase tracking-widest text-sm border border-subtleBorder text-mutedText hover:border-accent hover:text-accent transition-all duration-200"
+          >
             Learn More
           </NavLink>
         </div>
       </section>
 
-      {/* ── Features ───────────────────────────────────── */}
+      {/* ── features ───────────────────────────────────── */}
       <section className="flex flex-col gap-10">
         <div className="flex justify-center">
-          <h2 className="page-title text-xl">Why This Project</h2>
+          <h3 className="page-title ">features</h3>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -57,7 +61,7 @@ const Home = () => {
       {/* how works */}
       <section className="flex flex-col gap-10">
         <div className="flex justify-center">
-          <h2 className="page-title text-xl">How It Works</h2>
+          <h2 className="page-title">How It Works</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -87,7 +91,7 @@ const Home = () => {
           Ready to explore?
         </p>
         <h2 className="text-2xl md:text-3xl font-light tracking-widest text-headingText">
-          Start with a free account
+          Create your free account
         </h2>
         <p className="text-sm text-mutedText font-light max-w-sm leading-relaxed">
           No credit card. No setup fee. Just clean, working authentication.
