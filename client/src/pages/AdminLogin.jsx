@@ -12,7 +12,7 @@ const AdminLogin = () => {
 
   return (
     <>
-      <div className="py-6 w-full">
+      <div className="py-12 w-full">
         <div className="bg-cardBg border border-border rounded-xl px-8 py-10 flex flex-col gap-6 max-w-lg mx-auto   shadow-md">
           {/* title */}
 

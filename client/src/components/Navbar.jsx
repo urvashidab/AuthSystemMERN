@@ -26,7 +26,7 @@ const Navbar = () => {
 
       {/* right side-login */}
 
-      <NavLink to="/login" className="btn px-6 py-1.5 rounded">
+      <NavLink to="/login" className="btn px-6 py-1.5 ">
         log in
       </NavLink>
     </div>
