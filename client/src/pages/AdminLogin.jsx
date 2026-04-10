@@ -16,13 +16,16 @@ const AdminLogin = () => {
         <div className="bg-cardBg border border-border rounded-xl px-8 py-10 flex flex-col gap-6 max-w-lg mx-auto   shadow-md">
           {/* title */}
 
-          <h2 className=" flex gap-3 justify-center items-center font-bold text-lg uppercase">
+          <h2 className=" flex gap-3 justify-center items-center font-semibold tracking-wide text-lg uppercase">
             <FaLock />
             admin portal access
           </h2>
+          <p className="text-sm text-mutedText text-center">
+            Restricted access. Authorized personnel only.
+          </p>
 
           {/* form */}
-          <form id="loginForm" className="flex flex-col gap-4  mt-6">
+          <form className="flex flex-col gap-4  mt-6">
             {/* email */}
             <input
               type="email"
@@ -56,7 +59,7 @@ const AdminLogin = () => {
 
             {/* login button */}
 
-            <button type="submit" className="flex-1 btn px-6 py-1.5 rounded">
+            <button type="submit" className=" btn px-6 py-1.5 rounded">
               LOG IN
             </button>
           </form>

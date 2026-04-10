@@ -1,7 +1,5 @@
 import React from "react";
-import { FaGithub, FaInstagram, FaXTwitter } from "react-icons/fa6";
-import { FaFacebookF } from "react-icons/fa";
-
+import { socialIcons } from "../assets/data";
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
@@ -19,38 +17,17 @@ const Footer = () => {
 
         {/* right — social icons */}
         <div className="flex gap-6 text-base text-mutedText">
-          <a
-            href="https://github.com/urvashidab"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-bodyText transition"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://instagram.com/yourname"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-bodyText transition"
-          >
-            <FaInstagram />
-          </a>
-          <a
-            href="https://twitter.com/yourname"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-bodyText transition"
-          >
-            <FaXTwitter />
-          </a>
-          <a
-            href="https://facebook.com/yourname"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-bodyText transition"
-          >
-            <FaFacebookF />
-          </a>
+          {socialIcons.map((socialIcon) => (
+            <a
+              key={socialIcon.id}
+              href={socialIcon.url}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-bodyText transition"
+            >
+              {socialIcon.icon}
+            </a>
+          ))}
         </div>
       </div>
     </footer>
