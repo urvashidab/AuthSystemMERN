@@ -1,4 +1,5 @@
 import ContactModel from "../models/contactModel.js";
+import mongoose from "mongoose";
 
 // send message
 export const sendMessage = async (req, res) => {
@@ -61,6 +62,12 @@ export const getMessages = async (req, res) => {
 export const deleteMessage = async (req, res) => {
   try {
     const messageID = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(messageID)) {
+      return res.status(400).json({
+        message: "Invalid message ID",
+      });
+    }
+
     const deletedMessage = await ContactModel.findByIdAndDelete(messageID);
 
     if (!deletedMessage) {
