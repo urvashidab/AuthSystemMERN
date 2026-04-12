@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
+// -------- registration-----------
 export const registration = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -56,7 +57,7 @@ export const registration = async (req, res) => {
   }
 };
 
-// login
+// ---------------login-------------------
 
 export const logIn = async (req, res) => {
   try {
@@ -102,6 +103,19 @@ export const logIn = async (req, res) => {
   } catch (err) {
     return res.status(500).json({
       message: "Error while login",
+      error: err.message,
+    });
+  }
+};
+
+// --------------logout---------
+
+export const logout = async (req, res) => {
+  try {
+    res.status(200).json({ message: "Logout successfully" });
+  } catch (err) {
+    return res.status(500).json({
+      message: "Error while logout",
       error: err.message,
     });
   }
