@@ -3,7 +3,7 @@ dotenv.config();
 
 import express from "express";
 import connectDb from "./config/db.js";
-import router from "./routes/authRoute.js";
+import authRouter from "./routes/authRoute.js";
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 
 // routes
 
-app.use("/api/auth", router);
+app.use("/api/auth", authRouter);
 
 const port = process.env.PORT || 8081;
 //inititalize server
