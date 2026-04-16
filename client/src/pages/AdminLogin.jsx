@@ -51,7 +51,7 @@ const AdminLogin = () => {
               </button>
             </div>
 
-            <NavLink to="/resetpassword">
+            <NavLink to="/forgotpassword">
               <span className="text-sm text-bodyText  font-extralight underline">
                 Forgot password?
               </span>

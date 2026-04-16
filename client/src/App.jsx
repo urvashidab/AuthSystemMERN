@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import AdminLogin from "./pages/AdminLogin";
 import ResetPassword from "./pages/ResetPassword";
+import ForgotPassword from "./pages/ForgotPassword";
 import About from "./pages/About";
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>

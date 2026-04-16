@@ -86,7 +86,7 @@ const Login = () => {
             )}
 
             {isLoginMode ? (
-              <NavLink to="/resetpassword">
+              <NavLink to="/forgotpassword">
                 <span className="text-sm text-bodyText  font-extralight underline">
                   Have you forgotten your password?
                 </span>
