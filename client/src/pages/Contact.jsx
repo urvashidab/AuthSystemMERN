@@ -1,5 +1,5 @@
 import React from "react";
-import { FaGithub, FaInstagram } from "react-icons/fa6";
+import { socialIcons } from "../assets/data";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { LuPhone } from "react-icons/lu";
 
@@ -61,28 +61,23 @@ const Contact = () => {
               Find me on
             </p>
             <div className="flex gap-4">
-              <a
-                href="https://github.com/urvashidab"
-                target="_blank"
-                rel="noreferrer"
-                className="text-mutedText hover:text-accent transition-colors duration-150 text-lg"
-              >
-                <FaGithub />
-              </a>
-              <a
-                href="https://instagram.com/yourname"
-                target="_blank"
-                rel="noreferrer"
-                className="text-mutedText hover:text-accent transition-colors duration-150 text-lg"
-              >
-                <FaInstagram />
-              </a>
+              {socialIcons.map((icon) => (
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-mutedText hover:text-accent transition-colors duration-150 text-lg"
+                  key={icon.id}
+                  href={icon.url}
+                >
+                  {icon.icon}
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
         {/* ── right side — form ─────────────────────── */}
-        <div className="bg-cardBg border border-border rounded-xl px-8 py-10 flex flex-col gap-6 shadow shadow-accent">
+        <div className="bg-cardBg border border-border rounded-xl px-8 py-10 flex flex-col gap-6  shadow-md">
           <div className="flex flex-col gap-1 mb-2">
             <h3 className="text-base font-semibold tracking-wider uppercase text-headingText">
               Send a Message
@@ -125,11 +120,11 @@ const Contact = () => {
                 required
                 placeholder="Write your message here..."
                 rows="5"
-                className="form-input resize-none placeholder:opacity-70"
+                className=" mb-2   py-2 px-2 outline-none placeholder:text-placeholderText  transition-colors duration-200 resize-none placeholder:opacity-70"
               />
             </div>
 
-            <button type="submit" className="btn w-full py-2 px-8 mt-2">
+            <button type="submit" className="btn w-full py-2 px-8 ">
               SEND MESSAGE
             </button>
           </form>
