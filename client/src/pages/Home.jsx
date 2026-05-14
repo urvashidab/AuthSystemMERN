@@ -23,10 +23,10 @@ const Home = () => {
             Get Started
           </NavLink>
           <NavLink
-            to="/about"
+            to="/contact"
             className="px-6 py-1.5 uppercase tracking-widest text-sm border border-subtleBorder text-mutedText hover:border-accent hover:text-accent transition-all duration-200"
           >
-            Learn More
+            Contact us
           </NavLink>
         </div>
       </section>

@@ -1,7 +1,16 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import crypto from "crypto";
+import sendEmail from "../utils/sendEmail.js";
 
-const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+// set cookie
+const cookieOptions = {
+  maxAge: 7 * 24 * 60 * 60 * 1000, //7 days
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+};
 
 // -------- registration-----------
 export const registration = async (req, res) => {
@@ -16,12 +25,6 @@ export const registration = async (req, res) => {
 
     const normalizedEmail = email.toLowerCase().trim();
 
-    // email validation
-
-    if (!isValidEmail(normalizedEmail)) {
-      return res.status(400).json({ message: "Invalid email format" });
-    }
-
     // check if email is already registered
 
     const existingEmail = await User.findOne({ email: normalizedEmail });
@@ -34,21 +37,35 @@ export const registration = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // generate otp 6 digits
+
+    const otp = crypto.randomInt(100000, 999999).toString();
+    const otpExpiry = new Date(Date.now() + 15 * 60 * 1000); // 15 mints
     const newUser = await User.create({
       name: name.trim(),
       email: normalizedEmail,
       password: hashedPassword,
+      verifyOTP: otp,
+      verifyOTPExpiry: otpExpiry,
+    });
+
+    // send email for registration
+
+    await sendEmail({
+      to: newUser.email,
+      subject: "Verify Your Account",
+      message: `Your verification code is ${otp} , it expires in 15 minutes`,
     });
 
     // success
-    return res.status(201).json({
-      message: "User registered successfully",
-      user: {
-        id: newUser._id,
-        email: newUser.email,
-        name: newUser.name,
-      },
-    });
+    return res
+      .status(201)
+
+      .json({
+        success: true,
+        message:
+          "User registered successfully.Please check your email for verification.",
+      });
   } catch (err) {
     return res.status(500).json({
       message: "Error while signing up",
@@ -71,12 +88,6 @@ export const logIn = async (req, res) => {
 
     const normalizedEmail = email.toLowerCase().trim();
 
-    // email validation
-
-    if (!isValidEmail(normalizedEmail)) {
-      return res.status(400).json({ message: "Invalid email format" });
-    }
-
     // check if email is registered or not
 
     const user = await User.findOne({ email: normalizedEmail });
@@ -90,6 +101,23 @@ export const logIn = async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
+
+    // check if user is verified
+    if (!user.isVerified) {
+      return res.status(403).json({
+        message: "Email is not verified. Please verify your email first.",
+        isVerified: false,
+      });
+    }
+
+    // jwt
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRES_IN,
+    });
+
+    // send token in cookie
+    res.cookie("token", token, cookieOptions);
 
     // success
     return res.status(200).json({
@@ -112,7 +140,10 @@ export const logIn = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
-    res.status(200).json({ message: "Logout successfully" });
+    res.cookie("token", "", { ...cookieOptions, expires: new Date(0) });
+    return res
+      .status(200)
+      .json({ success: true, message: "Logout successfully" });
   } catch (err) {
     return res.status(500).json({
       message: "Error while logout",

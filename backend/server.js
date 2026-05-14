@@ -4,6 +4,7 @@ dotenv.config();
 import express from "express";
 import connectDb from "./config/db.js";
 import authRouter from "./routes/authRoute.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
@@ -12,6 +13,7 @@ connectDb();
 
 //middleware
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true }));
 

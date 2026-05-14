@@ -64,6 +64,16 @@ const userSchema = new mongoose.Schema(
       default: null,
     },
 
+    otpRequestCount: {
+      type: Number,
+      default: 0,
+    },
+
+    otpCoolDownTime: {
+      type: Date,
+      default: null,
+    },
+
     resetPasswordOTP: {
       type: String,
       default: null,
